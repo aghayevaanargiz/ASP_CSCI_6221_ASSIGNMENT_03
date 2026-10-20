@@ -4,7 +4,7 @@
 #define ARRAY_SIZE 100000
 
 void heapArray(void){
-    int *arr = malloc(5* sizeof(int));
+    int *arr = malloc(ARRAY_SIZE * sizeof(int));
     if (arr == NULL) {
         return;
     }
@@ -19,14 +19,14 @@ void heapArray(void){
 
 void staticArray(int i)
 {
-    static int arr[5];
+    static int arr[ARRAY_SIZE];
     
     arr[i]++;
     printf("%d\n", arr[i]);
 }
 
 void automaticArray(int i){
-    int arr[5] = {0};
+    int arr[ARRAY_SIZE] = {0};
 
     arr[i] ++;
     printf("%d\n", arr[i]);
