@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+#define ARRAY_SIZE 100000
 
 void heapArray(void){
     int *arr = malloc(5* sizeof(int));
@@ -30,11 +33,16 @@ void automaticArray(int i){
 }
 
 
-int main(void)
-{
+int main(void){
     staticArray(0);
     staticArray(0);
     staticArray(0);
-    
+
+    automaticArray(0);
+    automaticArray(0);
+    automaticArray(0);
+
+    heapArray();
+
     return 0;
 }
