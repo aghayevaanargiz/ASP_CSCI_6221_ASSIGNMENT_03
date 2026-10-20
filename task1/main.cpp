@@ -9,42 +9,42 @@ volatile long long checksum = 0;
 
 
 void staticArray(void){
-    static int arr[ARRAY_SIZE];
+    static volatile int arr[ARRAY_SIZE];
 
-    arr[0]++;
-    arr[ARRAY_SIZE / 2]++;
-    arr[ARRAY_SIZE - 1]++;
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        arr[i] = i;
+    }
 
     checksum += arr[0] + arr[ARRAY_SIZE / 2] + arr[ARRAY_SIZE - 1];
 }
 
 
 void automaticArray(void){
-    int arr[ARRAY_SIZE];
+    volatile int arr[ARRAY_SIZE];
 
-    arr[0] = 1;
-    arr[ARRAY_SIZE / 2] = 2;
-    arr[ARRAY_SIZE - 1] = 3;
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        arr[i] = i;
+    }
 
     checksum += arr[0] + arr[ARRAY_SIZE / 2] + arr[ARRAY_SIZE - 1];
 }
 
 
 void heapArray(void){
-    int *arr = malloc(ARRAY_SIZE * sizeof(int));
+    volatile int *arr = malloc(ARRAY_SIZE * sizeof(int));
 
     if (arr == NULL) {
         fprintf(stderr, "Memory allocation failed.\n");
         exit(EXIT_FAILURE);
     }
 
-    arr[0] = 1;
-    arr[ARRAY_SIZE / 2] = 2;
-    arr[ARRAY_SIZE - 1] = 3;
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        arr[i] = i;
+    }
 
     checksum += arr[0] + arr[ARRAY_SIZE / 2] + arr[ARRAY_SIZE - 1];
 
-    free(arr);
+    free((void *)arr);
 }
 
 
@@ -57,7 +57,6 @@ int main(void){
     printf("Array size: %d integers\n", ARRAY_SIZE);
     printf("Iterations: %d\n\n", ITERATIONS);
 
-
     start = clock();
 
     for (int i = 0; i < ITERATIONS; i++) {
@@ -66,7 +65,6 @@ int main(void){
 
     end = clock();
     elapsed = (double)(end - start) / CLOCKS_PER_SEC;
-
     printf("Static array:    %.6f seconds\n", elapsed);
 
 
@@ -78,7 +76,6 @@ int main(void){
 
     end = clock();
     elapsed = (double)(end - start) / CLOCKS_PER_SEC;
-
     printf("Automatic array: %.6f seconds\n", elapsed);
 
 
@@ -90,7 +87,6 @@ int main(void){
 
     end = clock();
     elapsed = (double)(end - start) / CLOCKS_PER_SEC;
-
     printf("Heap array:      %.6f seconds\n", elapsed);
 
     printf("\nChecksum: %lld\n", checksum);
