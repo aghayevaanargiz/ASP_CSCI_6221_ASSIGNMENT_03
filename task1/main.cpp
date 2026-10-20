@@ -4,8 +4,7 @@ void staticArray(int i)
 {
     static int arr[5];
 
-    arr[0] = 10; // What should you assign to arr[i] here?
-
+    arr[0] = 10; 
     printf("%d", arr[i]);
 }
 
