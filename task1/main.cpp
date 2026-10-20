@@ -1,48 +1,99 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define ARRAY_SIZE 100000
+#define ITERATIONS 100000
+
+volatile long long checksum = 0;
+
+
+void staticArray(void){
+    static int arr[ARRAY_SIZE];
+
+    arr[0]++;
+    arr[ARRAY_SIZE / 2]++;
+    arr[ARRAY_SIZE - 1]++;
+
+    checksum += arr[0] + arr[ARRAY_SIZE / 2] + arr[ARRAY_SIZE - 1];
+}
+
+
+void automaticArray(void){
+    int arr[ARRAY_SIZE];
+
+    arr[0] = 1;
+    arr[ARRAY_SIZE / 2] = 2;
+    arr[ARRAY_SIZE - 1] = 3;
+
+    checksum += arr[0] + arr[ARRAY_SIZE / 2] + arr[ARRAY_SIZE - 1];
+}
+
 
 void heapArray(void){
     int *arr = malloc(ARRAY_SIZE * sizeof(int));
+
     if (arr == NULL) {
-        return;
+        fprintf(stderr, "Memory allocation failed.\n");
+        exit(EXIT_FAILURE);
     }
-    
-    arr[0] = 10;
-    
-    
-    printf("%d\n", arr[0]);
+
+    arr[0] = 1;
+    arr[ARRAY_SIZE / 2] = 2;
+    arr[ARRAY_SIZE - 1] = 3;
+
+    checksum += arr[0] + arr[ARRAY_SIZE / 2] + arr[ARRAY_SIZE - 1];
 
     free(arr);
 }
 
-void staticArray(int i)
-{
-    static int arr[ARRAY_SIZE];
-    
-    arr[i]++;
-    printf("%d\n", arr[i]);
-}
-
-void automaticArray(int i){
-    int arr[ARRAY_SIZE] = {0};
-
-    arr[i] ++;
-    printf("%d\n", arr[i]);
-}
-
 
 int main(void){
-    staticArray(0);
-    staticArray(0);
-    staticArray(0);
+    clock_t start;
+    clock_t end;
+    double elapsed;
 
-    automaticArray(0);
-    automaticArray(0);
-    automaticArray(0);
+    printf("C Memory Allocation Benchmark\n");
+    printf("Array size: %d integers\n", ARRAY_SIZE);
+    printf("Iterations: %d\n\n", ITERATIONS);
 
-    heapArray();
+
+    start = clock();
+
+    for (int i = 0; i < ITERATIONS; i++) {
+        staticArray();
+    }
+
+    end = clock();
+    elapsed = (double)(end - start) / CLOCKS_PER_SEC;
+
+    printf("Static array:    %.6f seconds\n", elapsed);
+
+
+    start = clock();
+
+    for (int i = 0; i < ITERATIONS; i++) {
+        automaticArray();
+    }
+
+    end = clock();
+    elapsed = (double)(end - start) / CLOCKS_PER_SEC;
+
+    printf("Automatic array: %.6f seconds\n", elapsed);
+
+
+    start = clock();
+
+    for (int i = 0; i < ITERATIONS; i++) {
+        heapArray();
+    }
+
+    end = clock();
+    elapsed = (double)(end - start) / CLOCKS_PER_SEC;
+
+    printf("Heap array:      %.6f seconds\n", elapsed);
+
+    printf("\nChecksum: %lld\n", checksum);
 
     return 0;
 }
