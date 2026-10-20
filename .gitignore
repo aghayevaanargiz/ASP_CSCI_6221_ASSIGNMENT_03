@@ -1,1 +1,25 @@
+# Compiled C and C++ files
+*.o
+*.obj
+*.exe
+*.out
+*.dll
+
+# Build output
+build/
+bin/
+obj/
+
+# IDE settings
+.vscode/
+.idea/
+*.user
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
 
