@@ -12,5 +12,29 @@ class LibraryItem
   end
 end
 
-item = LibraryItem.new("Clean Code", "Robert C. Martin", 2008)
-item.display_info
+class Book < LibraryItem
+  def initialize(title, author, publication_year, genre)
+    super(title, author, publication_year)
+    @genre = genre
+  end
+  
+  
+  def display_info
+    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Genre: #{@genre}"
+  end
+end
+
+
+class DVD < LibraryItem
+  def initialize(title, author, publication_year, director)
+    super(title, author, publication_year)
+    @director = director
+  end
+  
+  
+  def display_info
+    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Director: #{@director}"
+  end
+end
+  
+
