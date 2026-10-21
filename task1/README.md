@@ -24,6 +24,8 @@ I used the `clock()` function from the C standard library to measure the executi
 
 I also included a checksum. The program adds together three selected array elements during every function call. This gives me a simple way to check that the expected values are being used in the calculations.
 
+I used the `volatile` keyword for the arrays to help prevent the compiler from optimizing away the array accesses. This helps ensure that the program performs the memory operations I intended to measure. However, `volatile` can also affect performance, so the results reflect this particular implementation.
+
 ## Results
 
 These are the results from my OnlineGDB run.
