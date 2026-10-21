@@ -41,7 +41,12 @@ class Book < LibraryItem
   end
   
   def display_info
-    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Genre: #{@genre}, Page count: #{@page_count}"
+    puts "\n--- Book ---"
+    puts "Title: #{@title}"
+    puts "Author: #{@author}"
+    puts "Publication year: #{@publication_year}"
+    puts "Genre: #{@genre}"
+    puts "Page count: #{@page_count}"
   end
 end
 
@@ -54,7 +59,12 @@ class DVD < LibraryItem
   end
   
   def display_info
-    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Director: #{@director}, Duration: #{@duration_minutes} minutes"
+    puts "\n--- DVD ---"
+    puts "Title: #{@title}"
+    puts "Author: #{@author}"
+    puts "Publication year: #{@publication_year}"
+    puts "Director: #{@director}"
+    puts "Duration: #{@duration_minutes} minutes"
   end
 end
 
@@ -66,7 +76,12 @@ class CD < LibraryItem
   end
   
   def display_info
-    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Artist: #{@artist}, Number of tracks: #{@number_of_tracks}"
+    puts "\n--- CD ---"
+    puts "Title: #{@title}"
+    puts "Author: #{@author}"
+    puts "Publication year: #{@publication_year}"
+    puts "Artist: #{@artist}"
+    puts "Number of tracks: #{@number_of_tracks}"
   end
 end
   
