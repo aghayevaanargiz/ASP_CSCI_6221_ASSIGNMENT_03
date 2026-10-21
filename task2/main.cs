@@ -4,12 +4,21 @@ class Instrument{
     public virtual void Play(){
         Console.WriteLine("The instrument is playing.");
     }
+
+	public void PlayStatic(){
+		Console.WriteLine("The instrument is playing.");
+	}
 }
 
 class Piano : Instrument{
     public override void Play(){
         Console.WriteLine("The piano is playing beautiful notes.");
     }
+	
+	public new void PlayStatic(){
+		Console.WriteLine("The piano is playing beautiful notes.");
+	}
+	
 }
 
 class Program{
@@ -20,7 +29,7 @@ class Program{
         instrument.Play();
 		
 		Instrument instrument2 = new Piano();
-		instrument2.Play();
+		instrument2.PlayStatic();
 
         Piano piano = new Piano();
         piano.Play();
