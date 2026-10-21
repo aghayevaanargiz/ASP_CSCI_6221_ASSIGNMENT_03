@@ -7,6 +7,8 @@ class Instrument{
 
     Instrument instrument = new Instrument();
     instrument.Play();
+    Piano piano = new Piano();
+    piano.Play();
   }
 
   void Play(){
@@ -15,5 +17,6 @@ class Instrument{
 }
 
 class Piano : Instrument{
+  
 }
 
