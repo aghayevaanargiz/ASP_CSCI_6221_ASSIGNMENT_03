@@ -1,1 +1,2 @@
-
+class LibraryItem 
+end
