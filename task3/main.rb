@@ -1,3 +1,20 @@
+class Library 
+  def initialize
+    @items = []
+  end
+
+  def add_item(item)
+    @items << item
+  end
+
+  def display_all_items
+    @items.each do |item|
+      item.display_info
+    end
+  end
+end
+
+
 class LibraryItem 
   def initialize(title, author, publication_year)
     @title = title
@@ -49,3 +66,5 @@ class CD < LibraryItem
   end
 end
   
+cd = CD.new("A Day at the Races", "Queen", 1976, "Rock")
+cd.display_info
