@@ -36,5 +36,16 @@ class DVD < LibraryItem
     puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Director: #{@director}"
   end
 end
-  
 
+class CD < LibraryItem
+  def initialize(title, author, publication_year, artist)
+    super(title, author, publication_year)
+    @artist = artist
+  end
+  
+  
+  def display_info
+    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Artist: #{@artist}"
+  end
+end
+  
