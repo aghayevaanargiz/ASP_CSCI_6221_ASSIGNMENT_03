@@ -13,7 +13,7 @@ class Library
   
   def display_all_items
     @items.each do |item|
-      item.display_info  #I used polymophism just here
+      item.display_info  # I used polymorphism here
     end
   end
 end
@@ -34,45 +34,45 @@ class LibraryItem
 end
 
 class Book < LibraryItem
-  def initialize(title, author, publication_year, genre)
+  def initialize(title, author, publication_year, genre, page_count)
     super(title, author, publication_year)
     @genre = genre
+    @page_count = page_count
   end
   
-  
   def display_info
-    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Genre: #{@genre}"
+    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Genre: #{@genre}, Page count: #{@page_count}"
   end
 end
 
 
 class DVD < LibraryItem
-  def initialize(title, author, publication_year, director)
+  def initialize(title, author, publication_year, director, duration_minutes)
     super(title, author, publication_year)
     @director = director
+    @duration_minutes = duration_minutes
   end
   
-  
   def display_info
-    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Director: #{@director}"
+    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Director: #{@director}, Duration: #{@duration_minutes} minutes"
   end
 end
 
 class CD < LibraryItem
-  def initialize(title, author, publication_year, artist)
+  def initialize(title, author, publication_year, artist, number_of_tracks)
     super(title, author, publication_year)
     @artist = artist
+    @number_of_tracks = number_of_tracks
   end
   
-  
   def display_info
-    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Artist: #{@artist}"
+    puts "Title: #{@title}, Author: #{@author}, Publication year: #{@publication_year}, Artist: #{@artist}, Number of tracks: #{@number_of_tracks}"
   end
 end
   
-book = Book.new("Concepts of Programming Languages", "Robert Sebesta", 2015, "Programming")
-dvd = DVD.new("Inception", "Christopher Nolan", 2010, "Science Fiction")
-cd = CD.new("A Day at the Races", "Queen", 1976, "Rock")
+book = Book.new("Concepts of Programming Languages", "Robert Sebesta", 2015, "Programming", 500)
+dvd = DVD.new("Inception", "Christopher Nolan", 2010, "Christopher Nolan", 148)
+cd = CD.new("A Day at the Races", "Queen", 1976, "Queen", 10)
 
 library = Library.new
 
@@ -87,6 +87,3 @@ library.remove_item(book)
 puts "------------After removal of book---------------"
 
 library.display_all_items
-
-
-
