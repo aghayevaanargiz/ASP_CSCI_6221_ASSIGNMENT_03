@@ -30,6 +30,7 @@ class Program{
 		
 		Instrument instrument2 = new Piano();
 		instrument2.PlayStatic();
+		instrument2.Play();
 
         Piano piano = new Piano();
         piano.Play();
