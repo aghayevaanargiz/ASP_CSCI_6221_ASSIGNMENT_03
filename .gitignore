@@ -4,22 +4,39 @@
 *.exe
 *.out
 *.dll
+*.so
+*.dylib
 
 # Build output
 build/
 bin/
 obj/
 
+# C# and .NET
+*.pdb
+*.cache
+.vs/
+TestResults/
+
+# Ruby
+.bundle/
+vendor/bundle/
+
 # IDE settings
 .vscode/
 .idea/
 *.user
+*.suo
 
 # Operating system files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Temporary files
+# Temporary files and logs
 *.tmp
 *.log
+*.bak
 
+# Generated documentation and coverage
+coverage/
