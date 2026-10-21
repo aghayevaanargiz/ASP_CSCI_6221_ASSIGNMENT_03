@@ -14,3 +14,6 @@ class Instrument{
   }
 }
 
+class Piano : Instrument{
+}
+
