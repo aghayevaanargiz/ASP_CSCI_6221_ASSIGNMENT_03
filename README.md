@@ -51,12 +51,6 @@ Each task folder contains the source code and a README file describing the imple
 
 The reports also explain the programming concepts explored in each task and document the reasoning behind the implementation.
 
-## AI Usage Disclaimer
-
-I used AI assistance as a learning and debugging helper, particularly when working with unfamiliar Ruby syntax and resolving programming errors. I asked for explanations of language features and feedback on mistakes so that I could understand how to correct them.
-
-The implementations and OOP design decisions were made by me as I am already familiar with the OOP concepts in Java and Python. I wrote the classes, constructors, inheritance relationships, methods, and library management logic myself. I also tested the programs and reviewed the results. AI assistance helped me understand syntax and improve the organization and clarity of my README files.
-
 ## Author
 
 **Nargiz Aghayeva**  
